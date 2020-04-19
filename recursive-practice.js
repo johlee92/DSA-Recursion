@@ -47,19 +47,19 @@ nthTriangularNumber(7);
 
 // exercise number 5 - string splitter
 // find out if there's a way to not have the variable declared outside of the recursive function
-function stringSplitter(str, splitter) {
+function stringSplitter(str, splitter, startingArr = []) {
     //base case
-    if(typeof newArr === 'undefined') {
-        let newArr = [];
+    if(typeof str === 'undefined') {
+        return startingArr
     }
     if(str.indexOf(splitter) === -1) {
-        newArr.push(str)
-        return newArr
+        startingArr.push(str)
+        return startingArr
     }
     //recursive case
-    newArr.push(str.slice(0,str.indexOf(splitter)))
-    stringSplitter(str.slice(str.indexOf(splitter)+1,str.length),splitter)
-    return newArr
+    startingArr.push(str.slice(0,str.indexOf(splitter)))
+    stringSplitter(str.slice(str.indexOf(splitter)+1,str.length),splitter, startingArr)
+    return startingArr
     // return str.slice(0,str.indexOf(splitter)) + ' '  stringSplitter(str.slice(str.indexOf(splitter)+1,str.length),splitter)
 }
 stringSplitter(`hello/world/this/is/fun`,`/`)
